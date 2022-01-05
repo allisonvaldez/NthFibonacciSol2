@@ -20,20 +20,22 @@ value needing to be accessed.
 
 
 def get_nth_fib(num, memoize={1: 0, 2: 1}):
+    """
+    Uses the concept of memoization to calculate the fibonacci sequence. The
+    if statement allows for easy access of previously calculated values as it
+    just returns the previous key. Else if the number is not found in the hash
+    table then we need to calculate it ourselves and store the value in the
+    table.
 
+    :param num: the number parameter
+    :param memoize: the hash table that saves previously calculated values
+    :return: the key of previously calculated value of sequence
+    """
     if num in memoize:
-        """
-        if the number sequence is in the hash table just return it (if previously
-        calculated"""
         return memoize[num]
     else:
-        """
-        else if the number is not already in the hash table then we need to 
-        calculate it ourselves with passing in the memoize object to 
-        calculate the two base cases.
-        """
         memoize[num] = get_nth_fib(num-1) + (num-2)
         return memoize[num]
 
 
-print(get_nth_fib(2))
+print(get_nth_fib(4))
